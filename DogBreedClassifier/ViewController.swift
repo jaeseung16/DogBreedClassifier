@@ -10,14 +10,24 @@ import UIKit
 import Vision
 
 class ViewController: UIViewController {
-
+    // MARK: Properties
+    // IBOutlets
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePhotoButton: UIButton!
     
+    // MARK:- Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        updateTitleLabel(with: "Human or Dog?")
+    }
+    
+    // Convenience methods
+    func updateTitleLabel(with titleText: String) {
+        DispatchQueue.main.async {
+            self.titleLabel.text = titleText
+        }
     }
     
     func presentAlert(_ title: String, error: NSError) {
@@ -49,12 +59,20 @@ class ViewController: UIViewController {
             }
             
             if results.count > 0 {
-                for k in 1...results.count {
-                    print("face \(k)")
+                for result in results {
+                    print("\(result)")
+                    print("\(result.boundingBox)")
                 }
+                
+                self.updateTitleLabel(with: "Human detected")
+
             } else {
-                print("No faces.")
+                self.updateTitleLabel(with: "This is not human")
+                
+                // Check whether this is a dog.
             }
+            
+            // Check dog breed...
             
         }
         
@@ -73,6 +91,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: IBActions
     @IBAction func choosePhoto(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -96,6 +115,7 @@ class ViewController: UIViewController {
     
 }
 
+// MARK:- UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
