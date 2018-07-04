@@ -45,9 +45,17 @@
                                     <action selector="runResnet50:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YQ9-Lo-WtB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-4V-z1B">
+                                <rect key="frame" x="106" y="599" width="163" height="30"/>
+                                <state key="normal" title="What breed is this dog?"/>
+                                <connections>
+                                    <action selector="findBreed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sM2-CK-JVN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Ihp-4V-z1B" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CEY-7m-nOQ"/>
                             <constraint firstItem="af7-Fv-SYf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DKv-ob-56u"/>
                             <constraint firstItem="cNg-pa-aoR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JB4-qV-9zW"/>
                             <constraint firstItem="3yw-3v-Siq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JCX-Op-Gd4"/>
@@ -57,6 +65,7 @@
                             <constraint firstItem="3yw-3v-Siq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="XCF-VT-hwU"/>
                             <constraint firstItem="bOq-M3-dwH" firstAttribute="top" secondItem="3yw-3v-Siq" secondAttribute="bottom" constant="8" id="Zeo-mW-U78"/>
                             <constraint firstItem="bOq-M3-dwH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zmc-au-8K5"/>
+                            <constraint firstItem="Ihp-4V-z1B" firstAttribute="top" secondItem="af7-Fv-SYf" secondAttribute="bottom" constant="8" id="qrQ-M8-B3q"/>
                             <constraint firstItem="3yw-3v-Siq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="yYy-v6-vgE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -16,8 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePhotoButton: UIButton!
     
-    let model = Resnet50()
-    
     // MARK:- Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,6 +150,65 @@ class ViewController: UIViewController {
                 
                 if dogCategory.count > 0 {
                     self.updateTitleLabel(with: "It looks like a dog.")
+                } else {
+                    self.updateTitleLabel(with: "It might not be a dog.")
+                }
+                
+            } else {
+                self.updateTitleLabel(with: "It might not be a dog.")
+                // Check whether this is a dog.
+            }
+            
+            
+            // Check dog breed...
+        }
+        
+        guard let image = self.imageView.image, let ciImage = CIImage(image: image) else {
+            fatalError("couldn't convert UIImage to CIImage")
+        }
+        
+        let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try imageRequestHandler.perform([resnet50Request])
+            } catch let error as NSError {
+                print("Failed to perform image request: \(error)")
+                self.presentAlert("Image Request Failed", error: error)
+                return
+            }
+        }
+    }
+    
+    @IBAction func findBreed(_ sender: UIButton) {
+        guard let model = try? VNCoreMLModel(for: DogAppModel().model) else {
+            fatalError("can't load Resnet50 model")
+        }
+        
+        let resnet50Request = VNCoreMLRequest(model: model) { (request, error) in
+            if let error = error as NSError? {
+                self.presentAlert("Face Detection Error", error: error)
+                return
+            }
+            
+            guard let results = request.results as? [VNClassificationObservation] else {
+                return
+            }
+            
+            var dogCategory = [String: Float]()
+            
+            if results.count > 0 {
+                for result in results {
+                    if result.confidence > 0.1 {
+                        print("\(result.confidence) - \(result.identifier)")
+                        dogCategory[result.identifier] = result.confidence
+                    }
+                }
+                
+                print("\(dogCategory)")
+                
+                if dogCategory.count > 0 {
+                    self.updateTitleLabel(with: "It looks like a(n) \(results[0].identifier).")
                 } else {
                     self.updateTitleLabel(with: "It might not be a dog.")
                 }
