@@ -47,43 +47,12 @@ class ViewController: UIViewController {
     }
     
     func performVisionRequest(image: CGImage, orientation: CGImagePropertyOrientation) {
-        var requests: [VNRequest] = []
-        
-        let faceDetectionRequest = VNDetectFaceRectanglesRequest { (request, error) in
-            if let error = error as NSError? {
-                self.presentAlert("Face Detection Error", error: error)
-                return
-            }
-            
-            guard let results = request.results as? [VNFaceObservation] else {
-                return
-            }
-            
-            if results.count > 0 {
-                for result in results {
-                    print("\(result)")
-                    print("\(result.boundingBox)")
-                }
-                
-                self.updateTitleLabel(with: "Human detected")
-
-            } else {
-                self.updateTitleLabel(with: "This is not human")
-                
-                // Check whether this is a dog.
-            }
-            
-            // Check dog breed...
-            
-        }
-        
-        requests.append(faceDetectionRequest)
-        
+        let faceDetectionRequest = VNDetectFaceRectanglesRequest(completionHandler: self.HandlerForFaceDetection)
         let imageRequestHandler = VNImageRequestHandler(cgImage: image, orientation: orientation, options: [:])
         
         DispatchQueue.global(qos: .userInitiated).async {
             do {
-                try imageRequestHandler.perform(requests)
+                try imageRequestHandler.perform([faceDetectionRequest])
             } catch let error as NSError {
                 print("Failed to perform image request: \(error)")
                 self.presentAlert("Image Request Failed", error: error)
@@ -119,49 +88,7 @@ class ViewController: UIViewController {
             fatalError("can't load Resnet50 model")
         }
         
-        let resnet50Request = VNCoreMLRequest(model: model) { (request, error) in
-            if let error = error as NSError? {
-                self.presentAlert("Face Detection Error", error: error)
-                return
-            }
-            
-            guard let results = request.results as? [VNClassificationObservation] else {
-                return
-            }
-            
-            var dogCategory = [String: Float]()
-            
-            if results.count > 0 {
-                for result in results {
-                    if result.confidence > 0.1 {
-                        let ids = imagenetIDs.filter {$0.value == result.identifier}
-                        
-                        for id in ids {
-                            if (id.key >= 151) && (id.key <= 268) {
-                                dogCategory[id.value] = result.confidence
-                            }
-                        }
-                        
-                        print("\(result.confidence) - \(result.identifier)")
-                    }
-                }
-                
-                print("\(dogCategory)")
-                
-                if dogCategory.count > 0 {
-                    self.updateTitleLabel(with: "It looks like a dog.")
-                } else {
-                    self.updateTitleLabel(with: "It might not be a dog.")
-                }
-                
-            } else {
-                self.updateTitleLabel(with: "It might not be a dog.")
-                // Check whether this is a dog.
-            }
-            
-            
-            // Check dog breed...
-        }
+        let resnet50Request = VNCoreMLRequest(model: model, completionHandler: self.HandlerForResnet50)
         
         guard let image = self.imageView.image, let ciImage = CIImage(image: image) else {
             fatalError("couldn't convert UIImage to CIImage")
@@ -185,42 +112,7 @@ class ViewController: UIViewController {
             fatalError("can't load Resnet50 model")
         }
         
-        let resnet50Request = VNCoreMLRequest(model: model) { (request, error) in
-            if let error = error as NSError? {
-                self.presentAlert("Face Detection Error", error: error)
-                return
-            }
-            
-            guard let results = request.results as? [VNClassificationObservation] else {
-                return
-            }
-            
-            var dogCategory = [String: Float]()
-            
-            if results.count > 0 {
-                for result in results {
-                    if result.confidence > 0.1 {
-                        print("\(result.confidence) - \(result.identifier)")
-                        dogCategory[result.identifier] = result.confidence
-                    }
-                }
-                
-                print("\(dogCategory)")
-                
-                if dogCategory.count > 0 {
-                    self.updateTitleLabel(with: "It looks like a(n) \(results[0].identifier).")
-                } else {
-                    self.updateTitleLabel(with: "It might not be a dog.")
-                }
-                
-            } else {
-                self.updateTitleLabel(with: "It might not be a dog.")
-                // Check whether this is a dog.
-            }
-            
-            
-            // Check dog breed...
-        }
+        let dogModelRequest = VNCoreMLRequest(model: model, completionHandler: self.HandlerForDogModel)
         
         guard let image = self.imageView.image, let ciImage = CIImage(image: image) else {
             fatalError("couldn't convert UIImage to CIImage")
@@ -230,14 +122,113 @@ class ViewController: UIViewController {
         
         DispatchQueue.global(qos: .userInitiated).async {
             do {
-                try imageRequestHandler.perform([resnet50Request])
+                try imageRequestHandler.perform([dogModelRequest])
             } catch let error as NSError {
                 print("Failed to perform image request: \(error)")
                 self.presentAlert("Image Request Failed", error: error)
                 return
             }
         }
+    }
+}
+
+// MARK:- Completion Hanlders
+extension ViewController {
+    func HandlerForFaceDetection(request: VNRequest, error: Error?) {
+        if let error = error as NSError? {
+            self.presentAlert("Face Detection Error", error: error)
+            return
+        }
         
+        guard let results = request.results as? [VNFaceObservation] else {
+            return
+        }
+        
+        if results.count > 0 {
+            for result in results {
+                print("\(result)")
+                print("\(result.boundingBox)")
+            }
+            
+            self.updateTitleLabel(with: "Human detected")
+            
+        } else {
+            self.updateTitleLabel(with: "This is not human")
+        }
+    }
+    
+    func HandlerForResnet50(request: VNRequest, error: Error?) {
+        if let error = error as NSError? {
+            self.presentAlert("Face Detection Error", error: error)
+            return
+        }
+        
+        guard let results = request.results as? [VNClassificationObservation] else {
+            return
+        }
+        
+        var dogCategory = [String: Float]()
+        
+        if results.count > 0 {
+            for result in results {
+                if result.confidence > 0.1 {
+                    let ids = imagenetIDs.filter {$0.value == result.identifier}
+                    
+                    for id in ids {
+                        if (id.key >= 151) && (id.key <= 268) {
+                            dogCategory[id.value] = result.confidence
+                        }
+                    }
+                    
+                    print("\(result.confidence) - \(result.identifier)")
+                }
+            }
+            
+            print("\(dogCategory)")
+            
+            if dogCategory.count > 0 {
+                self.updateTitleLabel(with: "It looks like a dog.")
+            } else {
+                self.updateTitleLabel(with: "It might not be a dog.")
+            }
+            
+        } else {
+            self.updateTitleLabel(with: "It might not be a dog.")
+            // Check whether this is a dog.
+        }
+    }
+    
+    func HandlerForDogModel(request: VNRequest, error: Error?) {
+        if let error = error as NSError? {
+            self.presentAlert("Face Detection Error", error: error)
+            return
+        }
+        
+        guard let results = request.results as? [VNClassificationObservation] else {
+            return
+        }
+        
+        var dogCategory = [String: Float]()
+        
+        if results.count > 0 {
+            for result in results {
+                if result.confidence > 0.1 {
+                    print("\(result.confidence) - \(result.identifier)")
+                    dogCategory[result.identifier] = result.confidence
+                }
+            }
+            
+            print("\(dogCategory)")
+            
+            if dogCategory.count > 0 {
+                self.updateTitleLabel(with: "It looks like a(n) \(results[0].identifier).")
+            } else {
+                self.updateTitleLabel(with: "It might not be a dog.")
+            }
+            
+        } else {
+            self.updateTitleLabel(with: "It might not be a dog.")
+        }
     }
 }
 

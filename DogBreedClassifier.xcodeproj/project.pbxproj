@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9024FD7520ED2F41004E7B82 /* DogAppModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */; };
+		9024FD7720EDA40A004E7B82 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */; };
 		9063733D20E94B4200DB3B4C /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9063733C20E94B4200DB3B4C /* Resnet50.mlmodel */; };
 		9063733F20E9521900DB3B4C /* ImagenetIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9063733E20E9521900DB3B4C /* ImagenetIDs.swift */; };
 		907C287520D1D83A0063D261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C287420D1D83A0063D261 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DogAppModel.mlmodel; sourceTree = "<group>"; };
+		9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
 		9063733C20E94B4200DB3B4C /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		9063733E20E9521900DB3B4C /* ImagenetIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagenetIDs.swift; sourceTree = "<group>"; };
 		907C287120D1D83A0063D261 /* DogBreedClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreedClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 		907C286820D1D83A0063D261 = {
 			isa = PBXGroup;
 			children = (
+				9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */,
 				907C287320D1D83A0063D261 /* DogBreedClassifier */,
 				907C288820D1D83B0063D261 /* DogBreedClassifierTests */,
 				907C289320D1D83B0063D261 /* DogBreedClassifierUITests */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9024FD7720EDA40A004E7B82 /* CoreMLClient.swift in Sources */,
 				9024FD7520ED2F41004E7B82 /* DogAppModel.mlmodel in Sources */,
 				907C287720D1D83A0063D261 /* ViewController.swift in Sources */,
 				9063733D20E94B4200DB3B4C /* Resnet50.mlmodel in Sources */,
