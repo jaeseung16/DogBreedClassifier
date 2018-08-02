@@ -49,17 +49,8 @@ class ViewController: UIViewController {
     }
     
     func performVisionRequest(image: CGImage, orientation: CGImagePropertyOrientation) {
-        let faceDetectionRequest = VNDetectFaceRectanglesRequest(completionHandler: self.HandlerForFaceDetection)
-        let imageRequestHandler = VNImageRequestHandler(cgImage: image, orientation: orientation, options: [:])
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try imageRequestHandler.perform([faceDetectionRequest])
-            } catch let error as NSError {
-                print("Failed to perform image request: \(error)")
-                self.presentAlert("Image Request Failed", error: error)
-                return
-            }
+        if let error = coreMLClient.performVisionRequest(image: image, orientation: orientation, completionHandler: self.HandlerForFaceDetection) {
+            self.presentAlert("Image Request Failed", error: error)
         }
     }
     
