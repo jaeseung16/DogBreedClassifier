@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePhotoButton: UIButton!
     
+    let coreMLClient = CoreMLClient()
+    
     // MARK:- Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,50 +86,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func runResnet50(_ sender: UIButton) {
-        guard let model = try? VNCoreMLModel(for: Resnet50().model) else {
-            fatalError("can't load Resnet50 model")
-        }
-        
-        let resnet50Request = VNCoreMLRequest(model: model, completionHandler: self.HandlerForResnet50)
-        
         guard let image = self.imageView.image, let ciImage = CIImage(image: image) else {
             fatalError("couldn't convert UIImage to CIImage")
         }
         
-        let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage)
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try imageRequestHandler.perform([resnet50Request])
-            } catch let error as NSError {
-                print("Failed to perform image request: \(error)")
-                self.presentAlert("Image Request Failed", error: error)
-                return
-            }
+        if let error = coreMLClient.performCoreMLRequest(model: "resnet50", image: ciImage, completionHandler: self.HandlerForDogModel) {
+            self.presentAlert("Image Request Failed", error: error)
         }
     }
     
     @IBAction func findBreed(_ sender: UIButton) {
-        guard let model = try? VNCoreMLModel(for: DogAppModel().model) else {
-            fatalError("can't load Resnet50 model")
-        }
-        
-        let dogModelRequest = VNCoreMLRequest(model: model, completionHandler: self.HandlerForDogModel)
-        
         guard let image = self.imageView.image, let ciImage = CIImage(image: image) else {
             fatalError("couldn't convert UIImage to CIImage")
         }
         
-        let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage)
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try imageRequestHandler.perform([dogModelRequest])
-            } catch let error as NSError {
-                print("Failed to perform image request: \(error)")
-                self.presentAlert("Image Request Failed", error: error)
-                return
-            }
+        if let error = coreMLClient.performCoreMLRequest(model: "dogApp", image: ciImage, completionHandler: self.HandlerForDogModel) {
+            self.presentAlert("Image Request Failed", error: error)
         }
     }
 }
