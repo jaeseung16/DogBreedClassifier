@@ -59,4 +59,22 @@ class CoreMLClient {
         return errorToReturn
     }
     
+    
+    func performVisionRequest(image: CGImage, orientation: CGImagePropertyOrientation, completionHandler: @escaping VNRequestCompletionHandler) -> NSError? {
+        let request = VNDetectFaceRectanglesRequest(completionHandler: completionHandler)
+        let imageRequestHandler = VNImageRequestHandler(cgImage: image, orientation: orientation, options: [:])
+        
+        var errorToReturn: NSError?
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try imageRequestHandler.perform([request])
+            } catch let error as NSError {
+                print("Failed to perform image request: \(error)")
+                errorToReturn = error
+            }
+        }
+        
+        return errorToReturn
+    }
 }
