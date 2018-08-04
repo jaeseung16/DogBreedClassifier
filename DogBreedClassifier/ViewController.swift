@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             fatalError("couldn't convert UIImage to CIImage")
         }
         
-        if let error = coreMLClient.performCoreMLRequest(model: "resnet50", image: ciImage, completionHandler: self.HandlerForDogModel) {
+        if let error = coreMLClient.performCoreMLRequest(model: "resnet50", image: ciImage, completionHandler: self.HandlerForResnet50) {
             self.presentAlert("Image Request Failed", error: error)
         }
     }
