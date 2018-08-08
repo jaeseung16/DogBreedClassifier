@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     
     let coreMLClient = CoreMLClient()
     
+    var isHuman = true
+    var isDog = false
+    
     // MARK:- Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,9 +119,12 @@ extension ViewController {
             }
             
             self.updateTitleLabel(with: "Human detected")
+            self.isHuman = true
+            self.isDog = false
             
         } else {
             self.updateTitleLabel(with: "This is not human")
+            self.isHuman = false
         }
     }
     
@@ -153,13 +159,16 @@ extension ViewController {
             
             if dogCategory.count > 0 {
                 self.updateTitleLabel(with: "It looks like a dog.")
+                self.isHuman = false
+                self.isDog = true
             } else {
                 self.updateTitleLabel(with: "It might not be a dog.")
+                self.isDog = false
             }
             
         } else {
             self.updateTitleLabel(with: "It might not be a dog.")
-            // Check whether this is a dog.
+            self.isDog = false
         }
     }
     
@@ -187,14 +196,34 @@ extension ViewController {
             
             if dogCategory.count > 0 {
                 self.updateTitleLabel(with: "It looks like a(n) \(results[0].identifier).")
-                
+            /*
                 DispatchQueue.main.async {
                     let dogImageViewController = self.storyboard?.instantiateViewController(withIdentifier: "DogImageViewController") as! DogImageViewController
 
                     dogImageViewController.imageIdentifier = "\(results[0].identifier)"
                     self.present(dogImageViewController, animated: true, completion: nil)
                 }
+            */
 
+                DispatchQueue.main.async {
+                    let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+                    
+                    if self.isHuman && !self.isDog {
+                        resultViewController.firstString = "The person in the image"
+                    } else if !self.isHuman && self.isDog {
+                        resultViewController.firstString = "The dog in the image"
+                    } else {
+                        resultViewController.firstString = "Whatever in the image"
+                    }
+                    
+                    resultViewController.secondString = "looks like a(n) \(results[0].identifier)."
+                    
+                    resultViewController.testImage = self.imageView.image
+                    resultViewController.dogImage = UIImage(named: "\(results[0].identifier)")
+                    
+                    self.present(resultViewController, animated: true, completion: nil)
+                }
+                
             } else {
                 self.updateTitleLabel(with: "It might not be a dog.")
             }

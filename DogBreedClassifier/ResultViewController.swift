@@ -15,10 +15,19 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var testImageView: UIImageView!
     @IBOutlet weak var dogImageView: UIImageView!
     
+    var firstString: String!
+    var secondString: String!
+    var testImage: UIImage!
+    var dogImage:UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        firstStringLabel.text = firstString
+        secondStringLabel.text = secondString
+        testImageView.image = testImage
+        dogImageView.image = dogImage
     }
 
     
