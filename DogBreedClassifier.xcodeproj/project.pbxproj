@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9020EE62211A74E500E4BEB0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9020EE61211A74E500E4BEB0 /* ResultViewController.swift */; };
 		9024FD7520ED2F41004E7B82 /* DogAppModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */; };
 		9024FD7720EDA40A004E7B82 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */; };
 		903EC62B2116655F00C120DD /* DogImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EC62A2116655F00C120DD /* DogImageViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9020EE61211A74E500E4BEB0 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DogAppModel.mlmodel; sourceTree = "<group>"; };
 		9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
 		903EC62A2116655F00C120DD /* DogImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				907C287B20D1D83B0063D261 /* Assets.xcassets */,
 				907C287D20D1D83B0063D261 /* LaunchScreen.storyboard */,
 				907C288020D1D83B0063D261 /* Info.plist */,
+				9020EE61211A74E500E4BEB0 /* ResultViewController.swift */,
 			);
 			path = DogBreedClassifier;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				9024FD7720EDA40A004E7B82 /* CoreMLClient.swift in Sources */,
 				9024FD7520ED2F41004E7B82 /* DogAppModel.mlmodel in Sources */,
 				907C287720D1D83A0063D261 /* ViewController.swift in Sources */,
+				9020EE62211A74E500E4BEB0 /* ResultViewController.swift in Sources */,
 				9063733D20E94B4200DB3B4C /* Resnet50.mlmodel in Sources */,
 				9063733F20E9521900DB3B4C /* ImagenetIDs.swift in Sources */,
 				907C287520D1D83A0063D261 /* AppDelegate.swift in Sources */,
