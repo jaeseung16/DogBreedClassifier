@@ -161,7 +161,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-Nv-BQo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-Nv-BQo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -187,7 +187,6 @@
                             <constraint firstItem="Pum-tf-hWu" firstAttribute="trailing" secondItem="Oo8-Nv-BQo" secondAttribute="trailing" constant="-15" id="1RY-vl-tnk"/>
                             <constraint firstItem="IuJ-oj-myB" firstAttribute="leading" secondItem="T1e-d1-nDs" secondAttribute="leading" id="2PX-6f-LQW"/>
                             <constraint firstItem="T1e-d1-nDs" firstAttribute="bottom" secondItem="Oo8-Nv-BQo" secondAttribute="bottom" id="45H-sU-i7G"/>
-                            <constraint firstItem="Oo8-Nv-BQo" firstAttribute="top" secondItem="IuJ-oj-myB" secondAttribute="bottom" id="5tj-UI-033"/>
                             <constraint firstItem="Pum-tf-hWu" firstAttribute="width" secondItem="Oo8-Nv-BQo" secondAttribute="width" multiplier="0.45" id="CFG-63-q9f"/>
                             <constraint firstItem="5Ej-r5-6hb" firstAttribute="top" secondItem="Oo8-Nv-BQo" secondAttribute="top" id="FFm-Sj-QMT"/>
                             <constraint firstItem="nkL-91-Y7y" firstAttribute="bottom" secondItem="Pum-tf-hWu" secondAttribute="bottom" id="Hme-ym-ECo"/>
@@ -201,6 +200,7 @@
                             <constraint firstItem="5Ej-r5-6hb" firstAttribute="trailing" secondItem="Oo8-Nv-BQo" secondAttribute="trailing" id="lqw-81-gqp"/>
                             <constraint firstItem="T1e-d1-nDs" firstAttribute="trailing" secondItem="IuJ-oj-myB" secondAttribute="trailing" id="sHU-Xq-gkD"/>
                             <constraint firstItem="5Ej-r5-6hb" firstAttribute="leading" secondItem="Oo8-Nv-BQo" secondAttribute="leading" id="v1z-gL-DFJ"/>
+                            <constraint firstItem="Oo8-Nv-BQo" firstAttribute="top" secondItem="T1e-d1-nDs" secondAttribute="top" constant="44" id="zGy-Cf-wpM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T1e-d1-nDs"/>
                     </view>
