@@ -64,11 +64,6 @@ class ViewController: UIViewController {
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
         
-        let presentCamera = UIAlertAction(title: "Camera", style: .default) { (_) in
-            imagePicker.sourceType = .camera
-            self.present(imagePicker, animated: true)
-        }
-        
         let presentLibrary = UIAlertAction(title: "Photo Library", style: .default) { (_) in
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true)
@@ -79,6 +74,11 @@ class ViewController: UIViewController {
         let prompt = UIAlertController(title: "Choose a Photo", message: "Please choose a photo", preferredStyle: .actionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let presentCamera = UIAlertAction(title: "Camera", style: .default) { (_) in
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true)
+            }
+            
             prompt.addAction(presentCamera)
         }
         
