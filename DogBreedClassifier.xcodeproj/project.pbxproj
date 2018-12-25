@@ -10,7 +10,6 @@
 		9020EE62211A74E500E4BEB0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9020EE61211A74E500E4BEB0 /* ResultViewController.swift */; };
 		9024FD7520ED2F41004E7B82 /* DogAppModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */; };
 		9024FD7720EDA40A004E7B82 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */; };
-		903EC62B2116655F00C120DD /* DogImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EC62A2116655F00C120DD /* DogImageViewController.swift */; };
 		9063733D20E94B4200DB3B4C /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9063733C20E94B4200DB3B4C /* Resnet50.mlmodel */; };
 		9063733F20E9521900DB3B4C /* ImagenetIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9063733E20E9521900DB3B4C /* ImagenetIDs.swift */; };
 		907C287520D1D83A0063D261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C287420D1D83A0063D261 /* AppDelegate.swift */; };
@@ -43,7 +42,6 @@
 		9020EE61211A74E500E4BEB0 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DogAppModel.mlmodel; sourceTree = "<group>"; };
 		9024FD7620EDA40A004E7B82 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
-		903EC62A2116655F00C120DD /* DogImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageViewController.swift; sourceTree = "<group>"; };
 		9063733C20E94B4200DB3B4C /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		9063733E20E9521900DB3B4C /* ImagenetIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagenetIDs.swift; sourceTree = "<group>"; };
 		907C287120D1D83A0063D261 /* DogBreedClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreedClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,7 +110,6 @@
 			children = (
 				907C287420D1D83A0063D261 /* AppDelegate.swift */,
 				907C287620D1D83A0063D261 /* ViewController.swift */,
-				903EC62A2116655F00C120DD /* DogImageViewController.swift */,
 				907C287820D1D83A0063D261 /* Main.storyboard */,
 				9063733E20E9521900DB3B4C /* ImagenetIDs.swift */,
 				9024FD7420ED2F41004E7B82 /* DogAppModel.mlmodel */,
@@ -284,7 +281,6 @@
 				9063733D20E94B4200DB3B4C /* Resnet50.mlmodel in Sources */,
 				9063733F20E9521900DB3B4C /* ImagenetIDs.swift in Sources */,
 				907C287520D1D83A0063D261 /* AppDelegate.swift in Sources */,
-				903EC62B2116655F00C120DD /* DogImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -90,56 +90,6 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--DogImageViewController-->
-        <scene sceneID="7qA-7s-PS7">
-            <objects>
-                <viewController storyboardIdentifier="DogImageViewController" title="DogImageViewController" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tVR-9q-DEO" customClass="DogImageViewController" customModule="DogBreedClassifier" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="W7w-2w-O4y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXX-7X-QCo">
-                                <rect key="frame" x="166.5" y="143" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8NH-8n-Isx">
-                                <rect key="frame" x="16" y="172" width="343" height="343"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8NH-8n-Isx" secondAttribute="height" multiplier="1:1" id="3bb-e5-Fbo"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgj-b4-QBo">
-                                <rect key="frame" x="160.5" y="529" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismiss:" destination="tVR-9q-DEO" eventType="touchUpInside" id="xC8-op-rIS"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8NH-8n-Isx" firstAttribute="leading" secondItem="Eyz-6Z-vgn" secondAttribute="leading" constant="16" id="53A-3M-PJj"/>
-                            <constraint firstItem="Rgj-b4-QBo" firstAttribute="top" secondItem="8NH-8n-Isx" secondAttribute="bottom" constant="14" id="5PF-ih-eYg"/>
-                            <constraint firstItem="8NH-8n-Isx" firstAttribute="top" secondItem="HXX-7X-QCo" secondAttribute="bottom" constant="8" id="Uv5-bU-X07"/>
-                            <constraint firstItem="Rgj-b4-QBo" firstAttribute="centerX" secondItem="Eyz-6Z-vgn" secondAttribute="centerX" id="bqB-q8-lXE"/>
-                            <constraint firstItem="HXX-7X-QCo" firstAttribute="centerX" secondItem="Eyz-6Z-vgn" secondAttribute="centerX" id="duV-UX-NxC"/>
-                            <constraint firstItem="8NH-8n-Isx" firstAttribute="centerX" secondItem="Eyz-6Z-vgn" secondAttribute="centerX" id="fYi-N4-d9v"/>
-                            <constraint firstItem="8NH-8n-Isx" firstAttribute="centerY" secondItem="Eyz-6Z-vgn" secondAttribute="centerY" id="sNe-rZ-eQQ"/>
-                            <constraint firstItem="Eyz-6Z-vgn" firstAttribute="trailing" secondItem="8NH-8n-Isx" secondAttribute="trailing" constant="16" id="vKF-Rs-YY1"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Eyz-6Z-vgn"/>
-                    </view>
-                    <connections>
-                        <outlet property="dogImageView" destination="8NH-8n-Isx" id="ZyN-xw-vLb"/>
-                        <outlet property="imageLabel" destination="HXX-7X-QCo" id="NAx-S5-aas"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZF4-0g-CWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="868" y="133.5832083958021"/>
-        </scene>
         <!--ResultViewController-->
         <scene sceneID="dCV-xJ-5PU">
             <objects>
