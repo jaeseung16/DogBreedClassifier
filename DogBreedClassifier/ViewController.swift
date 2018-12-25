@@ -15,11 +15,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePhotoButton: UIButton!
+    @IBOutlet weak var dogCheckButton: UIButton!
+    @IBOutlet weak var breedCheckButton: UIButton!
     
     let coreMLClient = CoreMLClient()
     
     var isHuman = true
     var isDog = false
+    
+    var buttonState = ButtonState.chooseAPhoto
+    var result = Result.other
+    
+    enum ButtonState {
+        case chooseAPhoto
+        case dogCheck
+        case breedCheck
+    }
+    
+    enum Result {
+        case dog
+        case human
+        case other
+    }
     
     // MARK:- Methods
     override func viewDidLoad() {
@@ -27,6 +44,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         updateTitleLabel(with: "Human or Dog?")
+        buttonState(state: buttonState)
     }
     
     // Convenience methods
@@ -54,6 +72,20 @@ class ViewController: UIViewController {
     func performVisionRequest(image: CGImage, orientation: CGImagePropertyOrientation) {
         if let error = coreMLClient.performVisionRequest(image: image, orientation: orientation, completionHandler: self.HandlerForFaceDetection) {
             self.presentAlert("Image Request Failed", error: error)
+        }
+    }
+    
+    func buttonState(state: ButtonState) {
+        switch state {
+        case .chooseAPhoto:
+            dogCheckButton.isEnabled = false
+            breedCheckButton.isEnabled = false
+        case .dogCheck:
+            dogCheckButton.isEnabled = true
+            breedCheckButton.isEnabled = false
+        case .breedCheck:
+            dogCheckButton.isEnabled = true
+            breedCheckButton.isEnabled = true
         }
     }
     
@@ -179,6 +211,12 @@ extension ViewController {
             self.updateTitleLabel(with: "It might not be a dog.")
             self.isDog = false
         }
+        
+        DispatchQueue.main.async {
+            self.buttonState = .breedCheck
+            self.buttonState(state: self.buttonState)
+        }
+        
     }
     
     func HandlerForDogModel(request: VNRequest, error: Error?) {
@@ -240,6 +278,12 @@ extension ViewController {
         } else {
             self.updateTitleLabel(with: "It might not be a dog.")
         }
+        
+        DispatchQueue.main.async {
+            self.buttonState = .chooseAPhoto
+            self.buttonState(state: self.buttonState)
+        }
+        
     }
 }
 
@@ -266,6 +310,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         }
         
         performVisionRequest(image: cgImage, orientation: cgOrientation!)
+        
+        buttonState = .dogCheck
+        buttonState(state: buttonState)
         
         dismiss(animated: true, completion: nil)
     }

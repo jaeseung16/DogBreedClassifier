@@ -79,7 +79,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="breedCheckButton" destination="Ihp-4V-z1B" id="dNR-3X-rcG"/>
                         <outlet property="choosePhotoButton" destination="bOq-M3-dwH" id="0Dh-IK-o4D"/>
+                        <outlet property="dogCheckButton" destination="af7-Fv-SYf" id="kuY-2V-yd8"/>
                         <outlet property="imageView" destination="3yw-3v-Siq" id="by5-ic-5I5"/>
                         <outlet property="titleLabel" destination="cNg-pa-aoR" id="cRJ-Ep-DBC"/>
                     </connections>
