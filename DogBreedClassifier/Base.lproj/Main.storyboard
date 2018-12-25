@@ -150,6 +150,9 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuJ-oj-myB">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Tpv-jh-U63"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Result" id="6nh-ij-JwC">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mBb-NL-QEe">

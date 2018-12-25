@@ -42,7 +42,6 @@ class ResultViewController: UIViewController {
         
         activityController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
             guard completed else { return }
-            self.dismiss(animated: true, completion: nil)
         }
         
         present(activityController, animated: true, completion: nil)
@@ -74,7 +73,7 @@ extension ResultViewController {
         let ratioWidth = dogImageView.frame.size.width / imageSize.width
         let ratioHeight = dogImageView.frame.size.height / imageSize.height
         
-        let scale = ratioWidth < ratioHeight ? ratioWidth : ratioHeight
+        let scale = ratioWidth > ratioHeight ? ratioWidth : ratioHeight
         
         return CGSize(width: imageSize.width * scale, height: imageSize.height * scale)
     }
