@@ -34,4 +34,19 @@ class ResultViewController: UIViewController {
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+
+    
+    @IBAction func presentActivityController(_ sender: UIBarButtonItem) {
+        
+        
+        let activityController = UIActivityViewController(activityItems: [dogImageView.image!], applicationActivities: nil)
+        
+        activityController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
+            guard completed else { return }
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        present(activityController, animated: true, completion: nil)
+    }
+    
 }

@@ -157,7 +157,11 @@
                                                 <action selector="dismiss:" destination="mwa-LM-5l0" id="98Y-EO-0O4"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2k5-bO-VRJ"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2k5-bO-VRJ">
+                                            <connections>
+                                                <action selector="presentActivityController:" destination="mwa-LM-5l0" id="8yR-cB-Vgx"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
