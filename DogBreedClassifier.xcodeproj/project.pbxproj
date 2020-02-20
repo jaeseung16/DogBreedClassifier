@@ -208,16 +208,16 @@
 				TargetAttributes = {
 					907C287020D1D83A0063D261 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 					};
 					907C288420D1D83B0063D261 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 						TestTargetID = 907C287020D1D83A0063D261;
 					};
 					907C288F20D1D83B0063D261 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 						TestTargetID = 907C287020D1D83A0063D261;
 					};
 				};
@@ -462,7 +462,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.DogBreedClassifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -480,7 +480,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.DogBreedClassifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -500,7 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.DogBreedClassifierTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreedClassifier.app/DogBreedClassifier";
 			};
@@ -521,7 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.DogBreedClassifierTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreedClassifier.app/DogBreedClassifier";
 			};
@@ -541,7 +541,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.DogBreedClassifierUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DogBreedClassifier;
 			};
@@ -561,7 +561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.DogBreedClassifierUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DogBreedClassifier;
 			};
